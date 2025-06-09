@@ -316,7 +316,7 @@ form.innerHTML = `
       launch_toast(`${key} should be entered`, "https://zikobch.github.io/Survexa/assets/jsons/infos.json");
       return; // Stop submission if any field is empty
     }
-  }
+  }f
 
   formData.formType = formDataFromFirestore.formType || "unknown";
   formData.submittedAt = serverTimestamp();
@@ -325,7 +325,7 @@ form.innerHTML = `
     await addDoc(collection(db, "usersfeedbacks"), formData);
     launch_toast("Form submitted successfully!", "https://zikobch.github.io/Survexa/assets/jsons/success.json");
 
-    alert("Form submitted successfully!");
+   
     form.reset();
   } catch (error) {
     console.error("Error submitting form:", error);
