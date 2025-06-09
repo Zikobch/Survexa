@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Login</title>
-    <link rel="stylesheet" href="/styles/login.css" />
+    <link rel="stylesheet" href="https://zikobch.github.io/Survexa/styles/login.css" />
   </head>
   <body>
     <div class="container">
@@ -143,7 +143,7 @@
         renderer: "svg",
         loop: true,
         autoplay: true,
-        path: "Survexa/assets/jsons/login.json", // replace with your Lottie JSON file URL
+        path: "https://zikobch.github.io/Survexa/assets/jsons/login.json", // replace with your Lottie JSON file URL
       });
     </script>
     <script>
@@ -168,7 +168,7 @@
       // Initial Lottie (eye closed)
       toggleIcon.innerHTML = `
     <lottie-player 
-      src="Survexa/assets/jsons/hideeye.json" 
+      src="https://zikobch.github.io/Survexa/assets/jsons/hideeye.json" 
       background="transparent" 
       speed="1" 
       style="width: 50px; height: 50px;"  
@@ -197,8 +197,8 @@
       <lottie-player 
         src="${
           isPasswordVisible
-            ? "Survexa/assets/jsons/openeye.json"
-            : "Survexa/assets/jsons/hideeye.json"
+            ? "https://zikobch.github.io/Survexa/assets/jsons/openeye.json"
+            : "https://zikobch.github.io/Survexa/assets/jsons/hideeye.json"
         }"
         background="transparent" 
         speed="1" 
@@ -252,20 +252,20 @@
         const password = document.getElementById("passwordField").value.trim();
 
         if (!email || !password) {
-       launch_toast("Please provide all fields", "Survexa/assets/jsons/infos.json");
+       launch_toast("Please provide all fields", "https://zikobch.github.io/Survexa/assets/jsons/infos.json");
 
           return;
         }
 if (email === "admin" && password == "admin123") { 
-    launch_toast("login success", "Survexa/assets/jsons/success.json");
+    launch_toast("login success", "https://zikobch.github.io/Survexa/assets/jsons/success.json");
 
     // Wait for 2 seconds then redirect to dashboard
     setTimeout(function() {
-        window.location.href = "Survexa/screens/dashboard.html";  // Redirect to dashboard.html
+        window.location.href = "https://zikobch.github.io/Survexa/screens/dashboard.html";  // Redirect to dashboard.html
     }, 2000);  // 2000 milliseconds = 2 seconds
 
 } else {
-    launch_toast("invalid email or password", "Survexa/assets/jsons/infos.json"); 
+    launch_toast("invalid email or password", "https://zikobch.github.io/Survexa/assets/jsons/infos.json"); 
 }
 
    
