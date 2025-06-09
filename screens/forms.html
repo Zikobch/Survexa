@@ -1393,42 +1393,51 @@ if (imageWrapper) {
     }
 
     // Form Submission
-    document.addEventListener("submit", async (e) => {
-      if (!formDataFromFirestore) return;
-      e.preventDefault();
+  document.addEventListener("submit", async (e) => {
+  if (!formDataFromFirestore) return;
+  e.preventDefault();
 
-      const formData = {};
-      const elements = form.elements;
+  const formData = {};
+  const elements = form.elements;
 
-      for (let i = 0; i < elements.length; i++) {
-        const el = elements[i];
-        if (!el.name) continue;
+  for (let i = 0; i < elements.length; i++) {
+    const el = elements[i];
+    if (!el.name) continue;
 
-        switch (el.type) {
-          case "checkbox":
-            formData[el.name] = el.checked;
-            break;
-          case "select-one":
-            formData[el.name] = el.value;
-            break;
-          default:
-            formData[el.name] = el.value;
-        }
-      }
+    switch (el.type) {
+      case "checkbox":
+        formData[el.name] = el.checked;
+        break;
+      case "select-one":
+        formData[el.name] = el.value;
+        break;
+      default:
+        formData[el.name] = el.value;
+    }
+  }
 
-      formData.formType = formDataFromFirestore.formType || "unknown";
- formData.submittedAt = serverTimestamp();
-      try {
-await addDoc(collection(db, "usersfeedbacks"), formData);
-               launch_toast("Form submitted successfully!", "..https://zikobch.github.io/Survexa/assets/jsons/success.json");
+  // Check for empty string values
+  for (const [key, value] of Object.entries(formData)) {
+    if (value === "") {
+      launch_toast(`${key} should be entered`, "https://zikobch.github.io/Survexa/assets/jsons/infos.json");
+      return; // Stop submission if any field is empty
+    }
+  }
 
-        alert("Form submitted successfully!");
-        form.reset();
-      } catch (error) {
-        console.error("Error submitting form:", error);
-        alert("Error submitting form. Please try again.");
-      }
-    });
+  formData.formType = formDataFromFirestore.formType || "unknown";
+  formData.submittedAt = serverTimestamp();
+
+  try {
+    await addDoc(collection(db, "usersfeedbacks"), formData);
+    launch_toast("Form submitted successfully!", "https://zikobch.github.io/Survexa/assets/jsons/success.json");
+
+    alert("Form submitted successfully!");
+    form.reset();
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("Error submitting form. Please try again.");
+  }
+});
 
 
 async function addFormType(name, description) {
