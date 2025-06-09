@@ -60,6 +60,39 @@
 
   <!-- Firebase Auth scripts (optional) -->
   <script type="module">
+
+     function launch_toast(message, lottieSrc) {
+        const toast = document.getElementById("toast");
+        const desc = document.getElementById("desc");
+        const lottieContainer = document.getElementById(
+          "toast-lottie-container"
+        );
+
+        // Clear old animation if any
+        lottieContainer.innerHTML = "";
+
+        // Create and insert new lottie-player element
+        const lottiePlayer = document.createElement("lottie-player");
+        lottiePlayer.setAttribute("src", lottieSrc);
+        lottiePlayer.setAttribute("background", "transparent");
+        lottiePlayer.setAttribute("speed", "1");
+
+        lottiePlayer.setAttribute("loop", "");
+        lottiePlayer.setAttribute("autoplay", "");
+
+        lottieContainer.appendChild(lottiePlayer);
+
+        // Set message
+        desc.textContent = message;
+
+        // Show toast
+        toast.classList.add("show");
+
+        // Hide toast after 5 seconds
+        setTimeout(() => {
+          toast.classList.remove("show");
+        }, 5000);
+      }
     // Firebase Config
     const firebaseConfig = {
       apiKey: "AIzaSyABs3WLrvZYk0l7bMCifVdTa0D8dylC_Os",
