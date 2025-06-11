@@ -826,14 +826,18 @@
         <div x-show="showFieldConfigPopup" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50"
           style="z-index:9999999;" x-transition>
           <div class="bg-white rounded-lg p-6 w-96" style="z-index:9999999; position:absolute; right:2%; width:23%">
-            <h2 class="mb-4 text-lg font-semibold">Configure Field</h2>
+     <template x-if="fieldType !== 'checkbox'">
+              <div>
+ <h2 class="mb-4 text-lg font-semibold">Configure Field</h2>
 
             <label class="block mb-2 font-medium" :for="element.label.toLowerCase().replace(/\s+/g, '_')"
               x-text="element.label">Label</label>
 
             <input type="text" x-model="fieldLabel" placeholder="Enter field label"
               class="dark:bg-dark-900 h-11 w-full appearance-none rounded-lg border border-gray-300 bg-transparent bg-none px-4 py-2.5 pl-4 pr-11 text-sm text-gray-800 shadow-theme-xs placeholder:text-gray-400 focus:border-brand-300 focus:outline-hidden focus:ring-3 focus:ring-brand-500/10 dark:border-gray-700 dark:bg-gray-900 dark:text-white/90 dark:placeholder:text-white/30 dark:focus:border-brand-800" />
-<!-- Checkbox Group Configuration -->
+
+              </div>
+            </template><!-- Checkbox Group Configuration -->
 <template x-if="fieldType === 'checkbox'">
   <div class="mt-4">
     <!-- Group Title Input -->
@@ -917,10 +921,11 @@ checkboxOptionsInput: '',
             },
 
      saveField() {
-  if (!this.fieldLabel.trim()) {
-    alert('Please enter a label');
-    return;
-  }
+if (this.fieldType !== 'checkbox' && !this.fieldLabel.trim()) {
+  alert('Please enter a label');
+  return;
+}
+
 
   let options = [];
 
@@ -978,7 +983,13 @@ checkboxOptionsInput: '',
       groupTitle: this.checkboxGroupTitle.trim(),
       options: parsedOptions
     });
-  }
+  } else {
+  // Handles 'text', 'email', 'number', etc.
+  this.formElements.push({
+    type: this.fieldType,
+    label: this.fieldLabel.trim()
+  });
+}
 
   // Reset and close popup
   this.showFieldConfigPopup = false;
