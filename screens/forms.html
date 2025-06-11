@@ -1089,7 +1089,7 @@ const db = getFirestore(app); // ✅ Correct in modular
     async function saveToFirebase(data) {
       try {
         await addDoc(collection(db, "forms"), data);
-                       launch_toast("Form saved successfully!", "..https://zikobch.github.io/Survexa/assets/jsons/success.json");
+                       launch_toast("Form saved successfully!", "https://zikobch.github.io/Survexa/assets/jsons/success.json");
 
       } catch (e) {
         console.error("Error adding document: ", e);
@@ -1143,17 +1143,17 @@ const db = getFirestore(app); // ✅ Correct in modular
     const formType = document.getElementById('formTypeSelect').value.trim();
 
     if (!formType) {
-      launch_toast("Please select a form type.", "..https://zikobch.github.io/Survexa/assets/jsons/infos.json");
+      launch_toast("Please select a form type.", "https://zikobch.github.io/Survexa/assets/jsons/infos.json");
       return;
     }
 
     if (!name) {
-      launch_toast("Please fill in the form Title", "..https://zikobch.github.io/Survexa/assets/jsons/infos.json");
+      launch_toast("Please fill in the form Title", "https://zikobch.github.io/Survexa/assets/jsons/infos.json");
       return;
     }
 
     if (!description) {
-      launch_toast("Please fill in the form description", "..https://zikobch.github.io/Survexa/assets/jsons/infos.json");
+      launch_toast("Please fill in the form description", "https://zikobch.github.io/Survexa/assets/jsons/infos.json");
       return;
     }
 
@@ -1505,7 +1505,7 @@ const checkboxFields = entries.filter(([_, config]) => config.type === "checkbox
 
   try {
     await addDoc(collection(db, "usersfeedbacks"), formData);
-    launch_toast("Form submitted successfully!", "..https://zikobch.github.io/Survexa/assets/jsons/success.json");
+    launch_toast("Form submitted successfully!", "https://zikobch.github.io/Survexa/assets/jsons/success.json");
     alert("Form submitted successfully!");
     form.reset();
   } catch (error) {
@@ -1521,7 +1521,7 @@ async function addFormType(name, description) {
       description: description,
       createdAt: new Date()
     });
-               launch_toast(`Form type added with ID: ${docRef.id}`, "..https://zikobch.github.io/Survexa/assets/jsons/success.json");
+               launch_toast(`Form type added with ID: ${docRef.id}`, "https://zikobch.github.io/Survexa/assets/jsons/success.json");
 
   } catch (e) {
     console.error("Error adding form type: ", e);
@@ -1533,7 +1533,7 @@ document.getElementById("addtypeform").addEventListener("click", function () {
 
   if (!name ) {
   
-           launch_toast("Form name is required", "..https://zikobch.github.io/Survexa/assets/jsons/infos.json");
+           launch_toast("Form name is required", "https://zikobch.github.io/Survexa/assets/jsons/infos.json");
 
     return;
   }
