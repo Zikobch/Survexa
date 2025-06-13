@@ -138,7 +138,9 @@ const db = getFirestore(app);
     }
 
     async function loadFormList() {
-      const snapshot = await db.collection("forms").get();
+      const colRef = collection(db, "forms");
+const snapshot = await getDocs(colRef);
+
       const container = document.getElementById("formList");
 
       if (snapshot.empty) {
