@@ -60,11 +60,25 @@
       <div id="toast-lottie-container"></div>
       <div id="desc">Notification!</div>
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-auth.min.js"
+    integrity="sha512-1WvNc6vmbRNdFUBwZztWfJBv1m66SkSBGTiFPLWPKmYbX+iHsKODKCYBNkSz3gaV8/YUga7AF0BwCqTRogN/Bg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" type="module"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-app.js"
+    integrity="sha512-fkWvBa/U47QFAJMNpxi5QiLxbych1SGNUISPLXqfkxrQedwp/Fdvm90BL1j2+dlBRDoQW8AG9ieoml2rsNetUg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" type="module"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-app.min.js"
+    integrity="sha512-B6yibAJFxUBGIDV8xxabTQF359Cz1V3k6liTMPB8sn2pUsfq/MKlN4ZJFGRMyngqeY0LOauQyLzNh+A7T+YLoA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" type="module"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/firebase/11.1.0/firebase-firestore.min.js"
+    integrity="sha512-6C8do+xWOHE6IRXqkM/O3JxPtSvBzls/DEUD7+Dq7wGAGLbo2vPlxMH75vM9br+qXFGd6d2+bS7mFPwIwhFLJw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" type="module"></script>
    <script src="https://unpkg.com/lottie-web@5.12.0/build/player/lottie.min.js"></script>
     <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
   <!-- Firebase Auth scripts (optional) -->
   <script type="module">
-
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs,doc, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-firestore.js";
+    import { getAuth } from "https://www.gstatic.com/firebasejs/11.8.1/firebase-auth.js";
      function launch_toast(message, lottieSrc) {
         const toast = document.getElementById("toast");
         const desc = document.getElementById("desc");
