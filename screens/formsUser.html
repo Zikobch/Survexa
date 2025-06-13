@@ -120,8 +120,9 @@
       messagingSenderId: "945218770766",
       appId: "1:945218770766:web:ba93e547eab2837bb4f01f"
     };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
+   const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 
     const formId = new URLSearchParams(window.location.search).get("id");
     const form = document.getElementById("form2");
