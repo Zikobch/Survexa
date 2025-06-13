@@ -239,8 +239,9 @@ const db = getFirestore(app);
   const ImageContainer = document.getElementById('image-container');
   if (ImageContainer) ImageContainer.style.display = 'none';
 }
-      const formRef = db.collection("forms").doc(formId);
-      const formSnap = await formRef.get();
+      const formRef = doc(db, "forms", formId)
+     const formSnap = await getDoc(formRef);
+
 
 
       if (!formSnap.exists) {
